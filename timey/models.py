@@ -67,13 +67,23 @@ class ConversionResult(CalculationResult):
 
     __slots__ = (
         "payload",
+        "year",
+        "month",
+        "day",
+        "hour",
+        "minute",
+        "seconds",
+        "milliseconds",
+        "date_time",
+        "date",
+        "time",
+        "dst_active",
         "time_zone",
     )
 
     def __init__(self, payload: Response) -> None:
         super().__init__(payload)
         if payload:
-            self.payload = payload
             self.time_zone: str = payload.get("time_zone", None)
 
     def json(self) -> Response:
@@ -106,12 +116,26 @@ class Conversion:
 
 class CurrentTime(ConversionResult):
 
-    __slots__ = ("payload", "day_of_week")
+    __slots__ = (
+        "payload",
+        "year",
+        "month",
+        "day",
+        "hour",
+        "minute",
+        "seconds",
+        "milliseconds",
+        "date_time",
+        "date",
+        "time",
+        "dst_active",
+        "time_zone",
+        "day_of_week"
+    )
 
     def __init__(self, payload: Response) -> None:
         super().__init__(payload)
         if payload:
-            self.payload = payload
             self.day_of_week: str = payload.get("dayOfWeek", None)
 
     def json(self) -> Response:
