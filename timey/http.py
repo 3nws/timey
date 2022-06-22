@@ -33,14 +33,14 @@ class http:
         self.background_tasks = set()
         self.header = {"Content-Type": "application/json"}
 
-    def __await__(self):
-        return self.start().__await__()
-
     async def start(self):
         loop = asyncio.get_running_loop()
         self.loop = loop
         self._session = aiohttp.ClientSession()
         return self
+
+    async def end(self):
+        await self._session.close()
 
     async def _make_req(
         self, url: str, method: str, data: Optional[Dict[str, Any]] = None

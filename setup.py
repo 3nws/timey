@@ -17,4 +17,3 @@ setup(
     description="A simple(garbage and completely unnecessary but practice) async API wrapper for the [TimeAPI](https://www.timeapi.io) written in python.",
     python_requires=">=3.8",
 )
-
