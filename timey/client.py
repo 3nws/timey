@@ -6,12 +6,6 @@ from .models import *
 
 
 class Timey:
-    def __init__(self) -> None:
-        pass
-
-    def __call__(self, *args: Any, **kwargs: Any) -> Coroutine[Any, Any, Self]:
-        return self.start(*args, **kwargs)
-
     async def __aenter__(self):
         return await self.start()
 
